@@ -1,37 +1,83 @@
 <template>
-  <v-app id="inspire">
-    <v-card class="mx-auto" height="300" width="330">
-      <v-navigation-drawer permanent width="100%">
-        <v-row class="fill-height">
-          <v-navigation-drawer dark mini-variant mini-variant-width="56" permanent>
-            <v-list-item>
+  <v-app>
+    <div>
+      <v-toolbar>
+        <v-toolbar-title>Title</v-toolbar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-toolbar-items>
+          <v-btn text @click="test()">Link 1</v-btn>
+          <v-btn text>Link 2</v-btn>
+          <v-btn text>Link 3</v-btn>
+        </v-toolbar-items>
+
+        <v-btn icon>
+          <v-icon>mdi-export-variant</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-delete-circle</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-plus-circle</v-icon>
+        </v-btn>
+      </v-toolbar>
+    </div>
+    <v-card height="100%">
+      <v-navigation-drawer>
+        <template v-slot:prepend>
+          <div v-for="n in 30" v-bind:key="n">
+            <v-list-item two-line>
               <v-list-item-avatar>
-                <v-img src="https://randomuser.me/api/portraits/women/75.jpg"></v-img>
+                <img src="https://randomuser.me/api/portraits/women/81.jpg" />
               </v-list-item-avatar>
+
+              <v-list-item-content>
+                <v-list-item-title>Jane Smith</v-list-item-title>
+                <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+              </v-list-item-content>
             </v-list-item>
+          </div>
+        </template>
 
-            <v-divider></v-divider>
+        <v-divider></v-divider>
 
-            <v-list dense nav>
-              <v-list-item v-for="item in items" :key="item.title" @click="aa">
-                <v-list-item-action>
-                  <v-icon>{{ item.icon }}</v-icon>
-                </v-list-item-action>
+        <v-list dense>
+          <v-list-item v-for="item in items" :key="item.title" @click="aaa">
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-                <v-list-item-content>
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-navigation-drawer>
-
-          <v-list class="grow">
-            <v-list-item v-for="link in links" :key="link" link>
-              <v-list-item-title v-text="link"></v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-row>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-navigation-drawer>
     </v-card>
   </v-app>
 </template>
+<script>
+import axios from "axios";
+export default {
+  methods: {
+    test: () => {
+      alert("hogehoge1");
+      axios
+        .get("http://localhost:3000", {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "text/html"
+          },
+          data: {}
+        })
+        .then(res => {
+          alert(res);
+        })
+        .catch(err => {
+          alert(`err:${err}`);
+        });
+    }
+  }
+};
+</script>
