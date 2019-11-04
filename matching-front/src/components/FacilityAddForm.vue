@@ -10,6 +10,7 @@
           label="施設画像"
           placeholder="施設画像をアップロードしてください"
           accept="image/*"
+          multiple
         ></v-file-input>
         <div class="my-2">
           <v-btn color="success" @click="facilityRegist">登録</v-btn>
@@ -24,14 +25,17 @@ import axios from "axios";
 export default {
   data: () => ({
     facilityName: "",
-    facilityDetail: ""
+    facilityDetail: "",
+    facilityImages: []
   }),
   methods: {
     facilityRegist: function() {
-      const requestData = {
-        facilityName: this.facilityName,
-        facilityDetail: this.facilityDetail
-      };
+      const requestData = new FormData();
+      requestData.append("facilityName", this.facilityName);
+      requestData.append("facilityDetail", this.facilityDetail);
+      this.facilityImages.map(function(val) {
+        requestData.append("facilityImages[]", val);
+      });
       axios
         .post("http://localhost:3000/facility/create", requestData)
         .then(response => alert(JSON.stringify(response)))

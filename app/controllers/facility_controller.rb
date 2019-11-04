@@ -1,5 +1,6 @@
 class FacilityController < ApplicationController
   def create
+    binding.pry
     personal = {'name' => 'Yamada', 'old' => 28}
     facilities = Facility.new
     facilities.name = params[:facilityName]
