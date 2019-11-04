@@ -2,9 +2,7 @@
   <v-form v-model="valid">
     <v-container>
       <v-flex xs12>
-        <v-card class="text-left">
-          <p>施設情報を検索する</p>
-        </v-card>
+        <p class="text-left">施設情報を検索する</p>
         <v-text-field
           v-model="firstname"
           :rules="nameRules"
