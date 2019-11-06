@@ -3,7 +3,6 @@ class CreateFacilities < ActiveRecord::Migration[6.0]
     create_table :facilities do |t|
       t.string :name
       t.text :detail
-      t.string :image_name
 
       t.timestamps
     end
