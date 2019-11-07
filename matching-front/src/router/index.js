@@ -15,6 +15,11 @@ const routes = [
         path: "/facility/add",
         name: "facility_add",
         component: FacilityAdd
+    },
+    {
+        path: "/facility/edit",
+        name: "facility_edit",
+        component: FacilityAdd
     }
 ];
 
