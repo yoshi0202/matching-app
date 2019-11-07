@@ -1,12 +1,16 @@
 <template>
   <v-app-bar app>
     <v-toolbar-title class="headline text-uppercase">
-      <span>Common</span>
-      <span class="font-weight-light">Header</span>
+      <v-btn text to="/">
+        <span>Common</span>
+        <span class="font-weight-light">Header</span>
+      </v-btn>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn text href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-      <span class="mr-2">Latest Release</span>
-    </v-btn>
+    <router-link to="/facility/add">
+      <v-btn text>
+        <span class="mr-2">施設情報を登録する</span>
+      </v-btn>
+    </router-link>
   </v-app-bar>
 </template>
