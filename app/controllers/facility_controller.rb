@@ -25,4 +25,11 @@ class FacilityController < ApplicationController
     end
     render :json => {'result' => 'OK'}
   end
+  def destroy
+    Facility.destroy(params[:facilityId])
+    facilities = Facility.all.to_json(include: [:facility_images])
+    render :json => {
+      'facilities' => facilities,
+    }
+  end
 end

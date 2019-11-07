@@ -18,18 +18,16 @@
       </v-layout>
       <v-layout wrap>
         <v-flex xs3 offset-xs6>
-          <router-link :to="'/facility/edit/' + facility.id">
+          <router-link :to="{name : 'facility_edit' , params:{isEdit: true,facility:facility}}">
             <v-btn text>
               <span class="mr-2">施設情報を編集する</span>
             </v-btn>
           </router-link>
         </v-flex>
         <v-flex xs3>
-          <router-link :to="'/facility/destroy/' + facility.id">
-            <v-btn text>
-              <span class="mr-2">施設を削除する</span>
-            </v-btn>
-          </router-link>
+          <v-btn text @click="destroy(facility.id)">
+            <span class="mr-2">施設を削除する</span>
+          </v-btn>
         </v-flex>
       </v-layout>
     </v-card>
@@ -50,6 +48,19 @@ export default {
       })
       .catch(err => alert(JSON.stringify(err)));
   },
-  methods: {}
+  methods: {
+    destroy: function(index) {
+      axios
+        .post("http://localhost:3000/facility/destroy", {
+          facilityId: index
+        })
+        .then(response => {
+          this.facilities = JSON.parse(response.data.facilities);
+          console.log(this.facilities);
+        })
+        .catch(err => console.log(err));
+      console.log(index);
+    }
+  }
 };
 </script>
