@@ -1,5 +1,6 @@
 <template>
-  <v-app>
+  <v-container>
+    <Header></Header>
     <v-content>
       <v-container>
         <v-layout text-center wrap>
@@ -9,7 +10,7 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-app>
+  </v-container>
 </template>
 
 <script>
@@ -17,13 +18,13 @@
 // import SearchForm from "@/components/SearchForm.vue";
 // import Facility from "@/components/Facility.vue";
 import FacilityAddForm from "@/components/FacilityAddForm.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "home",
   components: {
-    // SearchForm,
-    // Facility,
-    FacilityAddForm
+    FacilityAddForm,
+    Header
   }
 };
 </script>

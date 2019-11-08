@@ -1,5 +1,6 @@
 <template>
-  <v-app>
+  <v-container>
+    <Header></Header>
     <v-content>
       <v-container>
         <v-layout text-center wrap>
@@ -12,19 +13,21 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-app>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
 import SearchForm from "@/components/SearchForm.vue";
 import Facility from "@/components/Facility.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "home",
   components: {
     SearchForm,
-    Facility
+    Facility,
+    Header
   }
 };
 </script>
