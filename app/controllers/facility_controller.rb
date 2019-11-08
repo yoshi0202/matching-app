@@ -22,6 +22,10 @@ class FacilityController < ApplicationController
           fp.write  image.read
         end
       end
+    else
+      facility.facility_images.create!(
+        "name" => "no-image.png"
+      )
     end
     render :json => {'result' => 'OK'}
   end

@@ -28,7 +28,7 @@ export default {
   created: function() {
     if (this.$route.params.facility) {
       this.facilityName = this.$route.params.facility.name;
-      this.facilityDetail = this.$route.params.facilityDetail;
+      this.facilityDetail = this.$route.params.facility.detail;
     }
   },
   data: () => ({
