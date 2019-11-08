@@ -14,7 +14,7 @@
           multiple
         ></v-file-input>
         <div class="my-2">
-          <v-btn v-if="$route.params.isEdit" color="success" @click="facilityRegist">編集</v-btn>
+          <v-btn v-if="$route.params.isEdit" color="success" @click="facilityUpdate">編集</v-btn>
           <v-btn v-else color="success" @click="facilityRegist">登録</v-btn>
         </div>
       </v-flex>
@@ -27,27 +27,40 @@ import axios from "axios";
 export default {
   created: function() {
     if (this.$route.params.facility) {
+      this.facilityId = this.$route.params.facility.id;
       this.facilityName = this.$route.params.facility.name;
-      this.facilityDetail = this.$route.params.facilityDetail;
+      this.facilityDetail = this.$route.params.facility.detail;
     }
   },
   data: () => ({
+    facilityId: "",
     facilityName: "",
     facilityDetail: "",
     facilityImages: []
   }),
   methods: {
     facilityRegist: function() {
-      const requestData = new FormData();
-      requestData.append("facilityName", this.facilityName);
-      requestData.append("facilityDetail", this.facilityDetail);
-      this.facilityImages.map(function(val) {
-        requestData.append("facilityImages[]", val);
-      });
+      const requestData = this.createParams(new FormData());
       axios
         .post("http://localhost:3000/facility/create", requestData)
         .then(response => alert(JSON.stringify(response)))
         .catch(err => alert(JSON.stringify(err)));
+    },
+    facilityUpdate: function() {
+      const requestData = this.createParams(new FormData());
+      axios
+        .post("http://localhost:3000/facility/update", requestData)
+        .then(response => alert(JSON.stringify(response)))
+        .catch(err => alert(JSON.stringify(err)));
+    },
+    createParams: function(formData) {
+      formData.append("facilityName", this.facilityName);
+      formData.append("facilityId", this.facilityId);
+      formData.append("facilityDetail", this.facilityDetail);
+      this.facilityImages.map(function(val) {
+        formData.append("facilityImages[]", val);
+      });
+      return formData;
     }
   }
 };
