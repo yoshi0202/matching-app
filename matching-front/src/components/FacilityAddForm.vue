@@ -43,14 +43,14 @@ export default {
       const requestData = this.createParams(new FormData());
       axios
         .post("http://localhost:3000/facility/create", requestData)
-        .then(response => alert(JSON.stringify(response)))
+        .then(this.$router.push("home"))
         .catch(err => alert(JSON.stringify(err)));
     },
     facilityUpdate: function() {
       const requestData = this.createParams(new FormData());
       axios
         .post("http://localhost:3000/facility/update", requestData)
-        .then(response => alert(JSON.stringify(response)))
+        .then(this.$router.push("home"))
         .catch(err => alert(JSON.stringify(err)));
     },
     createParams: function(formData) {
