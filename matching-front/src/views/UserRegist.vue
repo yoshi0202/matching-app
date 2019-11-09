@@ -72,7 +72,7 @@ export default {
             name: this.name
           }
         });
-        this.$router.push("home");
+        await this.$router.push("home");
       } catch (error) {
         alert(JSON.stringify(error));
       }

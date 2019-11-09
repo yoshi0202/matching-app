@@ -55,18 +55,18 @@ export default {
     Header
   },
   methods: {
-    userLogin: function() {
-      axios
-        .post("http://localhost:3000/user/login", {
+    userLogin: async function() {
+      try {
+        await axios.post("http://localhost:3000/user/login", {
           user: {
             email: this.email,
             password: this.password
           }
-        })
-        .then(this.$router.push("/"))
-        .catch(err => {
-          alert(`err:${JSON.stringify(err)}`);
         });
+        this.$router.push("/");
+      } catch (error) {
+        alert(`err:${JSON.stringify(error)}`);
+      }
     }
   }
 };
