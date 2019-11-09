@@ -1,16 +1,18 @@
 <template>
-  <v-container>
-    <Header></Header>
-    <v-content>
-      <v-container>
-        <v-layout text-center wrap>
-          <v-flex xs6 offset-xs3 mt-3>
-            <FacilityAddForm />
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-container>
+  <v-app>
+    <v-container>
+      <Header></Header>
+      <v-content>
+        <v-container>
+          <v-layout text-center wrap>
+            <v-flex xs6 offset-xs3 mt-3>
+              <FacilityAddForm />
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-container>
+  </v-app>
 </template>
 
 <script>

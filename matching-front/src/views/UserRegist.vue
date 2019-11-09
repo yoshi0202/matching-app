@@ -5,7 +5,14 @@
       <v-layout column wrap>
         <v-spacer></v-spacer>
         <v-flex sm2>
-          <h1>User Login</h1>
+          <h1>User Regist</h1>
+        </v-flex>
+        <v-flex sm2>
+          <v-layout row wrap>
+            <v-flex sm4 offset-sm4>
+              <v-text-field v-model="name" label="名前" placeholder="名前を入力してください" required></v-text-field>
+            </v-flex>
+          </v-layout>
         </v-flex>
         <v-flex sm2>
           <v-layout row wrap>
@@ -30,7 +37,7 @@
         <v-flex sm1>
           <v-layout row wrap>
             <v-flex sm4 offset-sm4>
-              <v-btn color="success" @click="userLogin">ログイン</v-btn>
+              <v-btn color="success" @click="userRegist">ユーザ登録</v-btn>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -48,25 +55,27 @@ import axios from "axios";
 export default {
   data: () => ({
     email: "",
-    password: ""
+    password: "",
+    name: ""
   }),
   name: "home",
   components: {
     Header
   },
   methods: {
-    userLogin: function() {
-      axios
-        .post("http://localhost:3000/user/login", {
+    userRegist: async function() {
+      try {
+        await axios.post("http://localhost:3000/user/create", {
           user: {
             email: this.email,
-            password: this.password
+            password: this.password,
+            name: this.name
           }
-        })
-        .then(this.$router.push("/"))
-        .catch(err => {
-          alert(`err:${JSON.stringify(err)}`);
         });
+        this.$router.push("home");
+      } catch (error) {
+        alert(JSON.stringify(error));
+      }
     }
   }
 };

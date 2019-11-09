@@ -1,19 +1,21 @@
 <template>
-  <v-container>
-    <Header></Header>
-    <v-content>
-      <v-container>
-        <v-layout text-center wrap>
-          <v-flex xs2 offset-xs2 mt-3>
-            <SearchForm />
-          </v-flex>
-          <v-flex xs6 mt-3>
-            <Facility />
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-container>
+  <v-app>
+    <v-container>
+      <Header></Header>
+      <v-content>
+        <v-container>
+          <v-layout text-center wrap>
+            <v-flex xs2 offset-xs2 mt-3>
+              <SearchForm />
+            </v-flex>
+            <v-flex xs6 mt-3>
+              <Facility />
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
