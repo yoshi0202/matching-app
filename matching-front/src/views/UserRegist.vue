@@ -65,14 +65,15 @@ export default {
   methods: {
     userRegist: async function() {
       try {
-        await axios.post("http://localhost:3000/user/create", {
+        const params = {
           user: {
             email: this.email,
             password: this.password,
             name: this.name
           }
-        });
-        await this.$router.push("home");
+        };
+        await axios.post("http://localhost:3000/user/create", params);
+        this.$router.push("home");
       } catch (error) {
         alert(JSON.stringify(error));
       }

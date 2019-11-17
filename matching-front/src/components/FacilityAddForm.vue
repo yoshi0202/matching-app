@@ -39,19 +39,23 @@ export default {
     facilityImages: []
   }),
   methods: {
-    facilityRegist: function() {
-      const requestData = this.createParams(new FormData());
-      axios
-        .post("http://localhost:3000/facility/create", requestData)
-        .then(this.$router.push("home"))
-        .catch(err => alert(JSON.stringify(err)));
+    facilityRegist: async function() {
+      try {
+        const requestData = this.createParams(new FormData());
+        await axios.post("http://localhost:3000/facility/create", requestData);
+        this.$router.push("home");
+      } catch (err) {
+        alert(JSON.stringify(err));
+      }
     },
-    facilityUpdate: function() {
-      const requestData = this.createParams(new FormData());
-      axios
-        .post("http://localhost:3000/facility/update", requestData)
-        .then(this.$router.push("home"))
-        .catch(err => alert(JSON.stringify(err)));
+    facilityUpdate: async function() {
+      try {
+        const requestData = this.createParams(new FormData());
+        await axios.post("http://localhost:3000/facility/update", requestData);
+        this.$router.push("home");
+      } catch (err) {
+        alert(JSON.stringify(err));
+      }
     },
     createParams: function(formData) {
       formData.append("facilityName", this.facilityName);

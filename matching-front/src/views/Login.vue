@@ -57,12 +57,13 @@ export default {
   methods: {
     userLogin: async function() {
       try {
-        await axios.post("http://localhost:3000/user/login", {
+        const params = {
           user: {
             email: this.email,
             password: this.password
           }
-        });
+        };
+        await axios.post("http://localhost:3000/user/login", params);
         this.$router.push("/");
       } catch (error) {
         alert(`err:${JSON.stringify(error)}`);
